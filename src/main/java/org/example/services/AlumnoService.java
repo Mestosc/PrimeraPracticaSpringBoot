@@ -6,6 +6,8 @@ import org.example.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AlumnoService {
     private final AlumnoRepository alumnoRepository;
@@ -14,7 +16,10 @@ public class AlumnoService {
         this.alumnoRepository = alumnoRepository;
     }
     @Transactional
-    public Alumno crearAlumno(Alumno alumno) {
+    public Alumno crearOActualizarAlumno(Alumno alumno) {
         return alumnoRepository.save(alumno);
+    }
+    public List<Alumno> obtenerTodosAlumnos() {
+        return alumnoRepository.findAll();
     }
 }
