@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlumnoService {
@@ -21,5 +22,11 @@ public class AlumnoService {
     }
     public List<Alumno> obtenerTodosAlumnos() {
         return alumnoRepository.findAll();
+    }
+    public void eliminarAlumno(Alumno alumno) {
+        alumnoRepository.delete(alumno);
+    }
+    public Optional<Alumno> obtenerAlumnos(Long id) {
+        return alumnoRepository.findById(id);
     }
 }
