@@ -26,6 +26,13 @@ public class Alumno {
         this.apelidos = apelidos;
         this.titor = titor;
     }
+
+    public Alumno(String apelidos, Titor titor, String nome) {
+        this.apelidos = apelidos;
+        this.titor = titor;
+        this.nome = nome;
+    }
+
     public Alumno() {}
 
     public Titor getTitor() {

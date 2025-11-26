@@ -22,6 +22,12 @@ public class Titor {
         this.nome = nome;
         this.apelidos = apelidos;
     }
+
+    public Titor(String nome, String apelidos) {
+        this.nome = nome;
+        this.apelidos = apelidos;
+    }
+
     public Titor() {}
 
     public Long getId() {

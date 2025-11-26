@@ -29,6 +29,6 @@ public class AlumnosController {
     @GetMapping("/obtener")
     public ResponseEntity<Alumno> obtenerAlumno(@RequestParam Long id) {
         Optional<Alumno> alumnoOptional = alumnoService.obtenerAlumno(id);
-        return alumnoOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return alumnoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

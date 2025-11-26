@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import org.example.model.Titor;
-import org.example.repository.TitorRepository;
 import org.example.services.TitorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ public class TitorController {
         this.titorService = titorService;
     }
 
-    @PostMapping("/añadir")
+    @PostMapping("/añadirT")
     public ResponseEntity<Titor> anadirTitor(@RequestBody Titor titor) {
         Titor titor1 = titorService.crearOActualizarTitor(titor);
         if (titor1!=null) {
@@ -25,13 +24,13 @@ public class TitorController {
             return ResponseEntity.badRequest().build();
         }
     }
-    @GetMapping("/obtener")
+    @GetMapping("/obtenerT")
     public ResponseEntity<Titor> obtenerTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
-        return titor.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); // El map devuelve un optional al que contiene el resultado de ResponseEntity.ok sobre el objeto y el orElseGet obtiene el error si lo hay
+        return titor.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); // El map devuelve un optional al que contiene el resultado de ResponseEntity.ok sobre el objeto y el orElseGet obtiene el error si lo hay
     }
 
-    @PostMapping("/eliminar")
+    @PostMapping("/eliminarT")
     public void eliminarTitor(@RequestBody Titor titor) {
         titorService.eliminarTitor(titor);
     }
