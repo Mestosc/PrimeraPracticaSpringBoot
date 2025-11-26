@@ -7,15 +7,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController("/titores")
+@RestController
+@RequestMapping(TitorController.REST_ENDPOINT)
 public class TitorController {
+    final static String REST_ENDPOINT = "/titores";
     private final TitorService titorService;
 
     public TitorController(TitorService titorService) {
         this.titorService = titorService;
     }
 
-    @PostMapping("/añadirT")
+    @PostMapping("/añadir")
     public ResponseEntity<Titor> anadirTitor(@RequestBody Titor titor) {
         Titor titor1 = titorService.crearOActualizarTitor(titor);
         if (titor1!=null) {
@@ -24,13 +26,13 @@ public class TitorController {
             return ResponseEntity.badRequest().build();
         }
     }
-    @GetMapping("/obtenerT")
+    @GetMapping("/obtener")
     public ResponseEntity<Titor> obtenerTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
         return titor.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); // El map devuelve un optional al que contiene el resultado de ResponseEntity.ok sobre el objeto y el orElseGet obtiene el error si lo hay
     }
 
-    @PostMapping("/eliminarT")
+    @PostMapping("/eliminar")
     public void eliminarTitor(@RequestBody Titor titor) {
         titorService.eliminarTitor(titor);
     }
