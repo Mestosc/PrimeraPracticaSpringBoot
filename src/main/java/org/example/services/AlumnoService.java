@@ -2,6 +2,7 @@ package org.example.services;
 
 import jakarta.transaction.Transactional;
 import org.example.model.Alumno;
+import org.example.model.Titor;
 import org.example.repository.AlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,8 @@ public class AlumnoService {
     }
     public Optional<Alumno> obtenerAlumno(Long id) {
         return alumnoRepository.findById(id);
+    }
+    public List<Alumno> obtenerAlumnosTutor(Titor titor) {
+        return alumnoRepository.findByTitor(titor);
     }
 }
