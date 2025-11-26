@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(TitorController.REST_ENDPOINT)
+@RequestMapping("/titores")
 public class TitorController {
-    final static String REST_ENDPOINT = "/titores";
     private final TitorService titorService;
 
     public TitorController(TitorService titorService) {
