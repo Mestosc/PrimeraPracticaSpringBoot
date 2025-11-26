@@ -1,12 +1,11 @@
 package org.example.controller;
 
 import org.example.model.Alumno;
-import org.example.model.Titor;
 import org.example.services.AlumnoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Optional;
 
 @RestController("/alumnos")
