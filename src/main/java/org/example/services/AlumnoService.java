@@ -24,6 +24,7 @@ public class AlumnoService {
     public List<Alumno> obtenerTodosAlumnos() {
         return alumnoRepository.findAll();
     }
+    @Transactional
     public void eliminarAlumno(Alumno alumno) {
         alumnoRepository.delete(alumno);
     }
