@@ -38,6 +38,6 @@ public class TitorController {
     @DeleteMapping("/eliminarID")
     public void eliminarTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
-        titor.ifPresent(this::eliminarTitor);
+        titor.ifPresent(titorService::eliminarTitor);
     }
 }
