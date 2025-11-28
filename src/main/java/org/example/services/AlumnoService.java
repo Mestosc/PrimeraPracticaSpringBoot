@@ -29,6 +29,10 @@ public class AlumnoService {
         alumnoRepository.delete(alumno);
     }
     public Optional<Alumno> obtenerAlumno(Long id) {
-        return alumnoRepository.findById(id);
+        Optional<Alumno> alumnoOptional = alumnoRepository.findById(id);
+        return alumnoOptional.map(a -> {
+            Titor titor = a.getTitor();
+            return a;
+        });
     }
 }

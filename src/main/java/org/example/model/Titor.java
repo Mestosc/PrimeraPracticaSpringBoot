@@ -19,7 +19,8 @@ public class Titor {
     @Column(length = 150,nullable = false)
     private String apelidos;
 
-    @OneToMany(mappedBy = "tutor")
+    @Column
+    @OneToMany(mappedBy = "tutor",fetch = FetchType.LAZY)
     private List<Alumno> alumnos;
 
     public Titor(Long id, String nome, String apelidos) {

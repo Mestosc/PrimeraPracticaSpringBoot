@@ -16,7 +16,7 @@ public class Alumno {
     @Column(length = 150,nullable = false)
     private String apelidos;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "titor",referencedColumnName = "id_titor")
     private Titor titor;
 
