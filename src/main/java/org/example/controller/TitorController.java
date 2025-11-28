@@ -1,10 +1,12 @@
 package org.example.controller;
 
+import org.example.model.Alumno;
 import org.example.model.Titor;
 import org.example.services.TitorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,5 +41,10 @@ public class TitorController {
     public void eliminarTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
         titor.ifPresent(titorService::eliminarTitor);
+    }
+    @GetMapping("/listarAlumnos")
+    public ResponseEntity<List<Alumno>> listarAlumnos(@RequestParam Long id) {
+        Optional<Titor> titor = titorService.obtenerTitor(id);
+        return titor.map(value -> ResponseEntity.ok(value.getAlumnos())).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
