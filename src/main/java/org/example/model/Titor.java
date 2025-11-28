@@ -20,7 +20,7 @@ public class Titor {
     private String apelidos;
 
     @Column
-    @OneToMany(mappedBy = "tutor",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
     private List<Alumno> alumnos;
 
     public Titor(Long id, String nome, String apelidos) {
