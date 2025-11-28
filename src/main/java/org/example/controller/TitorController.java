@@ -31,9 +31,13 @@ public class TitorController {
         return titor.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); // El map devuelve un optional al que contiene el resultado de ResponseEntity.ok sobre el objeto y el orElseGet obtiene el error si lo hay
     }
 
-    @PostMapping("/eliminar")
+    @DeleteMapping("/eliminar")
     public void eliminarTitor(@RequestBody Titor titor) {
         titorService.eliminarTitor(titor);
     }
-
+    @DeleteMapping("/eliminarID")
+    public void eliminarTitor(@RequestParam Long id) {
+        Optional<Titor> titor = titorService.obtenerTitor(id);
+        titor.ifPresent(this::eliminarTitor);
+    }
 }
