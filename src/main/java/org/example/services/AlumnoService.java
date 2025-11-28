@@ -31,7 +31,4 @@ public class AlumnoService {
     public Optional<Alumno> obtenerAlumno(Long id) {
         return alumnoRepository.findById(id);
     }
-    public List<Alumno> obtenerAlumnosTutor(Titor titor) {
-        return alumnoRepository.findByTitor(titor);
-    }
 }

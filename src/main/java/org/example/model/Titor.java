@@ -3,6 +3,8 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "titor")
 public class Titor {
@@ -17,10 +19,21 @@ public class Titor {
     @Column(length = 150,nullable = false)
     private String apelidos;
 
+    @OneToMany(mappedBy = "tutor")
+    private List<Alumno> alumnos;
+
     public Titor(Long id, String nome, String apelidos) {
         this.id = id;
         this.nome = nome;
         this.apelidos = apelidos;
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
     }
 
     public Titor(String nome, String apelidos) {

@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno,Long> {
-    List<Alumno> findByTitor(Titor tutor);
-}
+public interface AlumnoRepository extends JpaRepository<Alumno,Long> { }
