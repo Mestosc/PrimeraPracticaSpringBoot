@@ -32,4 +32,13 @@ public class AlumnosController {
         Optional<Alumno> alumnoOptional = alumnoService.obtenerAlumno(id);
         return alumnoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @DeleteMapping("/eliminarID")
+    public void eliminarAlumnos(@RequestParam Long id) {
+        Optional<Alumno> alumnoOptional = alumnoService.obtenerAlumno(id);
+        alumnoOptional.ifPresent(alumnoService::eliminarAlumno);
+    }
+    @DeleteMapping("/eliminar")
+    public void eliminarAlumnos(@RequestBody Alumno alumno) {
+        alumnoService.eliminarAlumno(alumno);
+    }
 }
