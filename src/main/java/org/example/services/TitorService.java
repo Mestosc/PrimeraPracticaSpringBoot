@@ -6,7 +6,6 @@ import org.example.repository.TitorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +18,6 @@ public class TitorService {
     }
 
     public Titor crearOActualizarTitor(Titor titor) {
-        titor.setAlumnos(new ArrayList<>());
         return titorRepository.save(titor);
     }
     public List<Titor> obtenerTitores() {
