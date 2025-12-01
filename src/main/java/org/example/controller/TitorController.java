@@ -2,10 +2,12 @@ package org.example.controller;
 
 import org.example.model.Alumno;
 import org.example.model.Titor;
+import org.example.services.AlumnoService;
 import org.example.services.TitorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,13 +15,17 @@ import java.util.Optional;
 @RequestMapping("/titores")
 public class TitorController {
     private final TitorService titorService;
-
-    public TitorController(TitorService titorService) {
+    private final AlumnoService alumnoService;
+    public TitorController(TitorService titorService,AlumnoService alumnoService) {
         this.titorService = titorService;
+        this.alumnoService = alumnoService;
     }
 
     @PostMapping("/añadir")
     public ResponseEntity<Titor> anadirTitor(@RequestBody Titor titor) {
+        List<Alumno> alumnos = new ArrayList<>();
+        alumnoService.obtenerAlumnosTitor(titor).ifPresent(alumnos::addAll);
+        titor.setAlumnos(alumnos);
         Titor titor1 = titorService.crearOActualizarTitor(titor);
         if (titor1!=null) {
             return ResponseEntity.ok(titor1);
