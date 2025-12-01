@@ -3,6 +3,7 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Titor {
 
     @Column
     @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
-    private List<Alumno> alumnos;
+    private List<Alumno> alumnos = new ArrayList<>();
 
     public Titor(Long id, String nome, String apelidos) {
         this.id = id;

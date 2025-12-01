@@ -21,8 +21,6 @@ public class TitorController {
 
     @PostMapping("/añadir")
     public ResponseEntity<Titor> anadirTitor(@RequestBody Titor titor) {
-        List<Alumno> alumnos = new ArrayList<>();
-        titor.setAlumnos(alumnos);
         Titor titor1 = titorService.crearOActualizarTitor(titor);
         if (titor1!=null) {
             return ResponseEntity.ok(titor1);
