@@ -15,16 +15,13 @@ import java.util.Optional;
 @RequestMapping("/titores")
 public class TitorController {
     private final TitorService titorService;
-    private final AlumnoService alumnoService;
     public TitorController(TitorService titorService,AlumnoService alumnoService) {
         this.titorService = titorService;
-        this.alumnoService = alumnoService;
     }
 
     @PostMapping("/añadir")
     public ResponseEntity<Titor> anadirTitor(@RequestBody Titor titor) {
         List<Alumno> alumnos = new ArrayList<>();
-        alumnoService.obtenerAlumnosTitor(titor).ifPresent(alumnos::addAll);
         titor.setAlumnos(alumnos);
         Titor titor1 = titorService.crearOActualizarTitor(titor);
         if (titor1!=null) {
