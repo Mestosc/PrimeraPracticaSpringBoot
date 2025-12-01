@@ -1,5 +1,6 @@
 package org.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,7 @@ public class Alumno {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "titor",referencedColumnName = "id_titor")
+    @JsonIgnoreProperties("alumnos")
     private Titor titor;
 
     public Alumno(Long id, String nome, String apelidos, Titor titor) {

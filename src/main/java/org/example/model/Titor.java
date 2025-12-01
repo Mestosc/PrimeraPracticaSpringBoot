@@ -23,7 +23,7 @@ public class Titor {
 
     @Column
     @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("titor")
     private List<Alumno> alumnos;
 
     public Titor(Long id, String nome, String apelidos) {
