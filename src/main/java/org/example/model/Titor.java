@@ -2,6 +2,7 @@ package org.example.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class Titor {
 
     @Column
     @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("titor")
+    @JsonManagedReference
     private List<Alumno> alumnos;
 
     public Titor(Long id, String nome, String apelidos) {
