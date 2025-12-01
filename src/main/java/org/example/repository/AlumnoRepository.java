@@ -9,6 +9,4 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno,Long> {
-    Optional<List<Alumno>> findByTitor(Titor titor);
-}
+public interface AlumnoRepository extends JpaRepository<Alumno,Long> { }
