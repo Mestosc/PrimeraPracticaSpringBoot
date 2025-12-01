@@ -19,6 +19,7 @@ public class AlumnoService {
     }
     @Transactional
     public Alumno crearOActualizarAlumno(Alumno alumno) {
+        alumno.getTitor().getAlumnos().add(alumno);
         return alumnoRepository.save(alumno);
     }
     public List<Alumno> obtenerTodosAlumnos() {
