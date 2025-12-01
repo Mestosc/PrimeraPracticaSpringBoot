@@ -22,7 +22,7 @@ public class Titor {
 
     @Column
     @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
-    private List<Alumno> alumnos = new ArrayList<>();
+    private List<Alumno> alumnos;
 
     public Titor(Long id, String nome, String apelidos) {
         this.id = id;
