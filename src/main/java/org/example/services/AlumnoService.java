@@ -36,7 +36,4 @@ public class AlumnoService {
             return a;
         });
     }
-    public Optional<List<Alumno>> obtenerAlumnosTitor(Titor titor) {
-        return alumnoRepository.findByTitor(titor);
-    }
 }
