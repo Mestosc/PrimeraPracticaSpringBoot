@@ -1,6 +1,7 @@
 
 package org.example.services;
 
+import org.example.model.Alumno;
 import org.example.model.Titor;
 import org.example.repository.TitorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

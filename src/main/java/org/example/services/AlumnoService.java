@@ -23,15 +23,14 @@ public class AlumnoService {
         return alumnoRepository.save(alumno);
     }
     public List<Alumno> obtenerTodosAlumnos() {
-        return alumnoRepository.findAll();
+        return alumnoRepository.findAll().stream().peek(Alumno::getTitor).toList();
     }
     @Transactional
     public void eliminarAlumno(Alumno alumno) {
         alumnoRepository.delete(alumno);
     }
     public Optional<Alumno> obtenerAlumno(Long id) {
-        Optional<Alumno> alumnoOptional = alumnoRepository.findById(id);
-        return alumnoOptional.map(a -> {
+        return alumnoRepository.findById(id).map(a -> {
             Titor titor = a.getTitor();
             return a;
         });
