@@ -20,7 +20,6 @@ public class TitorService {
     }
 
     public Titor crearOActualizarTitor(Titor titor) {
-        titor.setAlumnos(new ArrayList<>());
         return titorRepository.save(titor);
     }
     public List<Titor> obtenerTitores() {

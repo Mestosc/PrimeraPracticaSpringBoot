@@ -4,6 +4,7 @@ package org.example.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,10 +25,11 @@ public class Titor {
     @JsonManagedReference
     private List<Alumno> alumnos;
 
-    public Titor(Long id, String nome, String apelidos) {
+    public Titor(Long id, String nome, String apelidos, List<Alumno> alumnos) {
         this.id = id;
         this.nome = nome;
         this.apelidos = apelidos;
+        this.alumnos = alumnos;
     }
 
     public List<Alumno> getAlumnos() {
