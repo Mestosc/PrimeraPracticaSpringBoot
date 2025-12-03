@@ -38,7 +38,13 @@ public class AlumnosController {
         alumnoOptional.ifPresent(alumnoService::eliminarAlumno);
     }
     @DeleteMapping("/eliminar")
-    public void eliminarAlumnos(@RequestBody Alumno alumno) {
-        alumnoService.eliminarAlumno(alumno);
+    public ResponseEntity<Alumno> eliminarAlumnos(@RequestBody Alumno alumno) {
+        Optional<Alumno> alumnoOptional = alumnoService.obtenerAlumno(alumno.getId());
+        if (alumnoOptional.isPresent()) {
+            alumnoService.eliminarAlumno(alumno);
+            return ResponseEntity.ok(alumno);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
