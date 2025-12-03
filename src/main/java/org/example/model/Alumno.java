@@ -18,7 +18,7 @@ public class Alumno {
     private String apelidos;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "id_titor")
     @JsonBackReference
     private Titor titor;
 

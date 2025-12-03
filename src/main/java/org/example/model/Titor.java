@@ -25,11 +25,10 @@ public class Titor {
     @JsonManagedReference
     private List<Alumno> alumnos;
 
-    public Titor(Long id, String nome, String apelidos, List<Alumno> alumnos) {
+    public Titor(Long id, String nome, String apelidos) {
         this.id = id;
         this.nome = nome;
         this.apelidos = apelidos;
-        this.alumnos = alumnos;
     }
 
     public List<Alumno> getAlumnos() {
@@ -45,7 +44,9 @@ public class Titor {
         this.apelidos = apelidos;
     }
 
-    public Titor() {}
+    public Titor() {
+        this.alumnos = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;
