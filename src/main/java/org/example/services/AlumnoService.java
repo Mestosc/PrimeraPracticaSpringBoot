@@ -23,7 +23,7 @@ public class AlumnoService {
         return alumnoRepository.save(alumno);
     }
     public List<Alumno> obtenerTodosAlumnos() {
-        return alumnoRepository.findAll().stream().peek(Alumno::getTitor).toList();
+        return alumnoRepository.findAll().stream().map(a -> {a.getTitor();return a;}).toList();
     }
     @Transactional
     public void eliminarAlumno(Alumno alumno) {

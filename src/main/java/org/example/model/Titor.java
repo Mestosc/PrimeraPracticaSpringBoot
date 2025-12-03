@@ -20,7 +20,6 @@ public class Titor {
     @Column(length = 150,nullable = false)
     private String apelidos;
 
-    @Column
     @OneToMany(mappedBy = "titor",fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Alumno> alumnos;
