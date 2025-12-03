@@ -38,9 +38,9 @@ public class TitorController {
         titorService.eliminarTitor(titor);
     }
     @DeleteMapping("/eliminarID")
-    public void eliminarTitor(@RequestParam Long id) {
+    public ResponseEntity<Titor> eliminarTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
-        titor.ifPresent(titorService::eliminarTitor);
+        return titor.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
     }
     @GetMapping("/listarAlumnos")
     public ResponseEntity<List<Alumno>> listarAlumnos(@RequestParam Long id) {
