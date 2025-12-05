@@ -48,7 +48,7 @@ public class AlumnosController {
             alumnoService.eliminarAlumno(alumno);
             return ResponseEntity.ok(alumno);
         } else {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
     }
 }
