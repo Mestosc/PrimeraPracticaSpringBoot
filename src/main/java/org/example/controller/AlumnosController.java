@@ -34,7 +34,12 @@ public class AlumnosController {
     @DeleteMapping("/eliminarID")
     public ResponseEntity<Alumno> eliminarAlumnos(@RequestParam Long id) {
         Optional<Alumno> alumnoOptional = alumnoService.obtenerAlumno(id);
-        return alumnoOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+        if (alumnoOptional.isPresent()) {
+            alumnoService.eliminarAlumno(alumnoOptional.get());
+            return ResponseEntity.ok(alumnoOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     @DeleteMapping("/eliminar")
     public ResponseEntity<Alumno> eliminarAlumnos(@RequestBody Alumno alumno) {

@@ -34,8 +34,14 @@ public class TitorController {
     }
 
     @DeleteMapping("/eliminar")
-    public void eliminarTitor(@RequestBody Titor titor) {
-        titorService.eliminarTitor(titor);
+    public ResponseEntity<Titor> eliminarTitor(@RequestBody Titor titor) {
+        Optional<Titor> titor1 = titorService.obtenerTitor(titor.getId());
+        if (titor1.isPresent()) {
+            titorService.eliminarTitor(titor1.get());
+            return ResponseEntity.ok(titor1.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     @DeleteMapping("/eliminarID")
     public ResponseEntity<Titor> eliminarTitor(@RequestParam Long id) {
