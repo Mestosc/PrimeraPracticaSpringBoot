@@ -46,12 +46,7 @@ public class TitorController {
     @DeleteMapping("/eliminarID")
     public ResponseEntity<Titor> eliminarTitor(@RequestParam Long id) {
         Optional<Titor> titor = titorService.obtenerTitor(id);
-        if (titor.isPresent()) {
-            titorService.eliminarTitor(titor.get());
-            return ResponseEntity.ok(titor.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return titor.map(t -> {titorService.eliminarTitor(t); return ResponseEntity.ok(t);}).orElseGet(() -> ResponseEntity.notFound().build());
     }
     @GetMapping("/listarAlumnos")
     public ResponseEntity<List<Alumno>> listarAlumnos(@RequestParam Long id) {
